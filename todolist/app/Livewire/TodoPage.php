@@ -4,13 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Todo;
 use Livewire\Component;
-use Livewire\Attributes\Rule;
 
 class TodoPage extends Component
 {
-
     public $name;
-    public $isChecked;
+    public $todoClicked;
+    protected $listeners = ['dataUpdated'];
 
     public function create() {
         
@@ -19,11 +18,10 @@ class TodoPage extends Component
         ]);
 
         Todo::create([
-            'name'=>$this->name
+            'name' => $this->name
         ]);
 
         $this->reset();
-
     }
 
     public function delete($id) {
@@ -34,14 +32,22 @@ class TodoPage extends Component
     public function toggleCheck($id) {
         
         $todo = Todo::findOrFail($id);
-        $todo->is_checked = !$this->isChecked;
+        $todo->is_checked = !$todo->is_checked;
         $todo->update();
+    }
+
+    public function openForm($id) {
+        $this->todoClicked = $id;
+    }
+
+    public function closeForm() {
+        $this->todoClicked = null;
     }
 
     public function render()
     {
         $todos = Todo::latest()->get();
-        // $todos_name = Todo::latest()->get('name');
+
         return view('livewire.todo-page', [
             'todos'=>$todos
         ]);

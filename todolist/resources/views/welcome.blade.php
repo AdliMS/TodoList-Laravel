@@ -9,7 +9,7 @@
         <!-- Styles / Scripts -->
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50 border-2 border-red-500 m-0 p-0 h-screen flex-1 flex justify-center">
+    <body class="font-sans antialiased dark:bg-black dark:text-white/50 m-0 p-0 h-screen flex-1 flex justify-center bg-slate-100">
         @livewire('todo-page')
     </body>
 </html>
