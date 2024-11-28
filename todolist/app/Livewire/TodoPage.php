@@ -4,10 +4,14 @@ namespace App\Livewire;
 
 use App\Models\Todo;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TodoPage extends Component
 {
+    use WithPagination;
+    
     public $name;
+    public $search;
     public $todoClicked;
     protected $listeners = ['dataUpdated'];
 
@@ -46,10 +50,9 @@ class TodoPage extends Component
 
     public function render()
     {
-        $todos = Todo::latest()->get();
-
+    
         return view('livewire.todo-page', [
-            'todos'=>$todos
+            'todos'=>Todo::latest()->where('name', 'like', '%'. $this->search . '%')->paginate(3)
         ]);
     }
 }

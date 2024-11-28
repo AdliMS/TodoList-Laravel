@@ -9,6 +9,11 @@
             <input wire:model="name" class="w-full p-2 bg-gray-50 hover:bg-gray-100" type="text" placeholder="Type in your list...">
             <button class="w-[8rem] text-white p-2 bg-green-400 hover:bg-green-500 shadow-md">Create +</button>
         </form>
+
+        <div class="w-100 mt-4 mb-2 pt-4 border-t-[1px] border-black">
+            <input wire:model.live="search" class="w-full" type="text" placeholder="Search here...">
+        </div>
+        
     
         <ul>
             
@@ -47,15 +52,15 @@
                 @endforeach
 
             @else
-
-                    
                 <div class="flex items-center gap-2">
                     <h1 class="p-2">Write your todo now!</h1>
                     <div class="border-b border-dashed border-gray-600 w-3/6 h-0"></div>
                 </div>
-                    
-                
             @endif
+
+            <div class="m-2">
+                {{ $todos->links() }}
+            </div>
             
             
             
