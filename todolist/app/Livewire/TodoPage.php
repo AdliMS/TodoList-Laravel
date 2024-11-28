@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Todo;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,8 +14,7 @@ class TodoPage extends Component
     public $name;
     public $search;
     public $todoClicked;
-    protected $listeners = ['dataUpdated'];
-
+    
     public function create() {
         
         $this->validate([
@@ -48,6 +48,7 @@ class TodoPage extends Component
         $this->todoClicked = null;
     }
 
+    #[On('dataUpdated')]
     public function render()
     {
     

@@ -10,11 +10,8 @@
             <button class="w-[8rem] text-white p-2 bg-green-400 hover:bg-green-500 shadow-md">Create +</button>
         </form>
 
-        <div class="w-100 mt-4 mb-2 pt-4 border-t-[1px] border-black">
-            <input wire:model.live="search" class="w-full" type="text" placeholder="Search here...">
-        </div>
+        @include('livewire.search-bar')
         
-    
         <ul>
             
             @if ($todos->count() !== 0)
@@ -61,8 +58,6 @@
             <div class="m-2">
                 {{ $todos->links() }}
             </div>
-            
-            
             
         </ul>
     </div>
